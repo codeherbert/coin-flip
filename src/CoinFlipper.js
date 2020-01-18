@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import { choice } from './helpers';
 
 class CoinFlipper extends Component {
     static defaultProps = {
@@ -18,7 +19,20 @@ class CoinFlipper extends Component {
         this.handleClick = this.handleClick.bind(this);
     }
     flipCoin() {
-
+        const newCoin = choice(this.props.coins);
+        this.setState(st => {
+            let newState = {
+                ...st,
+                currCoin: newCoin,
+                numFlips: st.numFlips + 1
+            }
+            if(newCoin.side === "heads") {
+                newState.numHeads +=1;
+            } else {
+                newState.numTails +=1;
+            }
+            return newState;
+        });
     }
     handleClick(e) {
         this.flipCoin();
