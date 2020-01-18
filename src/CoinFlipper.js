@@ -21,17 +21,12 @@ class CoinFlipper extends Component {
     flipCoin() {
         const newCoin = choice(this.props.coins);
         this.setState(st => {
-            let newState = {
-                ...st,
+            return {
                 currCoin: newCoin,
-                numFlips: st.numFlips + 1
-            }
-            if(newCoin.side === "heads") {
-                newState.numHeads +=1;
-            } else {
-                newState.numTails +=1;
-            }
-            return newState;
+                numFlips: st.numFlips + 1,
+                numHeads: st.numHeads + (newCoin.side === "heads" ? 1: 0),
+                numTails: st.numTails + (newCoin.side === "tails" ? 1: 0)             
+            };
         });
     }
     handleClick(e) {
