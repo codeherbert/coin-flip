@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import Coin from './Coin';
 import { choice } from './helpers';
 
 class CoinFlipper extends Component {
@@ -37,14 +38,14 @@ class CoinFlipper extends Component {
             <div className="CoinFlipper">
                 <h2>Let's flip a coin!!</h2>
                 <button onClick={this.handleClick}>Flip me!</button>
+                {this.state.currCoin  && <Coin info={this.state.currCoin} />}
                 <p>
                     Out of {this.state.numFlips} flips, there have been { this.state.numHeads}{" "} heads and
                     {" "}{this.state.numTails} tails.
                 </p>
             </div>
-        )
+        );
     }
-
 }
 
 export default CoinFlipper;
