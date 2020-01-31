@@ -1,12 +1,13 @@
 import React, {Component} from 'react';
 import Coin from './Coin';
 import { choice } from './helpers';
+import './CoinFlipper.css';
 
 class CoinFlipper extends Component {
     static defaultProps = {
         coins: [
             {side: "heads", imgSrc: "https://tinyurl.com/react-coin-heads-jpg"},
-            {side: "tails", imgSrc: "https://tinyurl.com/react-coin-tails-jpg"}
+            {side: "tails", imgSrc: "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2d/US_50_Cent_Rev.png/330px-US_50_Cent_Rev.png"}
         ]
     };
     constructor(props) {
@@ -37,11 +38,11 @@ class CoinFlipper extends Component {
         return (
             <div className="CoinFlipper">
                 <h2>Let's flip a coin!!</h2>
-                <button onClick={this.handleClick}>Flip me!</button>
                 {this.state.currCoin  && <Coin info={this.state.currCoin} />}
+                <button onClick={this.handleClick}>Flip me!</button>
                 <p>
-                    Out of {this.state.numFlips} flips, there have been { this.state.numHeads}{" "} heads and
-                    {" "}{this.state.numTails} tails.
+                    Out of <span>{this.state.numFlips}</span> flips, there have been <span>{ this.state.numHeads}</span>{" "} heads and
+                    {" "}<span>{this.state.numTails}</span> tails.
                 </p>
             </div>
         );
